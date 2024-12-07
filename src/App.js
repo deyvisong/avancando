@@ -8,6 +8,7 @@ import ShowUserName from "./components/ShowUserName";
 import CarDetails from "./components/CarDetails";
 import Fragment from "./components/Fragment";
 import Container from "./components/Container";
+import ExecuteFunction from "./components/ExecuteFunction";
 
 function App() {
   // const name = "John";
@@ -15,9 +16,13 @@ function App() {
 
   const cars = [
     { id: 1, brand: "Ferrari", color: "Red", newCar: true, km: 0 },
-    { id: 1, brand: "KIA", color: "White", newCar: false, km: 25000 },
-    { id: 1, brand: "Ford", color: "Black", newCar: false, km: 35000 },
+    { id: 2, brand: "KIA", color: "White", newCar: false, km: 25000 },
+    { id: 3, brand: "Ford", color: "Black", newCar: false, km: 35000 },
   ];
+
+  function showMessage() {
+    console.log("Event from parent component");
+  }
   return (
     <div className="App">
       <h1>Avançando em React</h1>
@@ -44,6 +49,7 @@ function App() {
       {/* Loop in object array */}
       {cars.map((car) => (
         <CarDetails
+          key={car.id}
           brand={car.brand}
           color={car.color}
           km={car.km}
@@ -58,7 +64,10 @@ function App() {
       </Container>
       <Container myValue="Testing 2">
         <h5>Testing container</h5>
+        <p>another test</p>
       </Container>
+      {/* exec function */}
+      <ExecuteFunction myFunction={showMessage} />
     </div>
   );
 }
